@@ -1,0 +1,27 @@
+input{
+	display: block;
+	margin:20px 0;
+}
+
+.signup{
+	color:blue;
+    cursor:pointer;
+    text-decoration:none;
+}
+
+.login_form{
+    position:absolute;
+    top:30%;
+    left:40%;
+    box-shadow: 0 2px 4px 0 rgba(0,0,0,.2), 0 1px 5px 0 rgba(0,0,0,.13);
+    padding:60px 30px;
+    background-color:#ffffff2b;
+}
+
+.error{
+    color:red;
+    font-size:15px;
+    text-align: center;
+    margin: 20px 0;
+    color:red;
+}

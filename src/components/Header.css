@@ -1,0 +1,27 @@
+.header{
+  box-shadow: 0 2px 4px 0 rgba(0,0,0,.2), 0 1px 5px 0 rgba(0,0,0,.13);
+  height:max-content;
+  background-color:white;
+  text-align:center;
+}
+
+.header_left{
+  padding:20px 0;
+}
+
+.menu_item {
+  padding: 20px;
+  background-color: inherit;
+  letter-spacing: 0.5px;
+  font-size: 14px;
+  text-decoration: none;
+  color: rgb(117, 117, 117);
+  &:link{
+    outline: none;
+  }
+}
+.active_item{
+  color: black;
+  font-weight: bold;
+  width: inherit;
+} 

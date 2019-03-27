@@ -1,0 +1,118 @@
+.admin_wrapper{
+    background-image:url('https://res.cloudinary.com/dpy0mkwsp/image/upload/v1545326564/images/burger-istock.jpg');
+    background-repeat: none;
+    background-size: cover;
+}
+.admin_head{
+    color:white;
+    font-size:50px;
+    font-weight:bold;
+    position:absolute;
+    top:50px;
+    left:50px;
+
+}
+.admin_view{
+    display:flex;
+    padding: 100px;  
+}
+.admin_left{
+    margin:100px;
+    background-color:white;
+    padding:30px;
+    border-radius:10px;
+}
+
+.left_head{
+    font-size:20px;
+    color:#00A0FC;
+    margin:20px 0;
+}
+
+.user_list{
+    margin:10px 0;
+    cursor:pointer;
+}
+
+.admin_right{
+    margin:100px 10px;
+    background-color:white;
+    padding:30px;
+    position:relative;
+    border-radius:10px;
+    height:250px;
+}
+
+.add_edit{
+    display:flex;
+    margin-left: 300px;
+}
+
+.add{
+    margin:0 10px;
+    color:#00A0FC;
+    cursor:pointer
+}
+
+.edit{
+    color:red;
+    cursor:pointer;
+}
+
+.save_cancel{
+    display:flex;
+    position:absolute;
+    bottom:13px;
+    right:25px;
+    margin:20px 0;
+}
+
+.save{
+    margin:0 10px;
+    background-color: #00A0FC;
+    color:white;
+    padding:10px;
+    cursor: pointer;
+}
+
+.cancel{
+    background-color: red;
+    color:white;
+    padding:10px;
+    cursor: pointer;
+}
+
+.user_info{
+    display:flex;
+    justify-content: center;
+    justify-items: center;
+    padding-top:65px;
+}
+
+.please_click{
+    display:flex;
+    justify-content: center;
+    justify-items: center;
+    padding-top:100px;
+    color:red;  
+}
+
+.add_dialoge{
+    padding:100px 50px;
+}
+
+.keyboard_icon{
+    color:black;
+}
+
+.keyboard{
+    background-color:#ff00001a;
+    width:590px;
+    position:absolute;
+    bottom:0;
+    z-index:999;
+    margin-left:-50px;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}

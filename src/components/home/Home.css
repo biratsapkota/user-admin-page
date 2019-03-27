@@ -1,0 +1,12 @@
+.math_section{
+    background-color:white;
+    font-size:20px;
+    width:30%;
+    position:absolute;
+    top:30%;
+    left:35%;
+    height:400px;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
