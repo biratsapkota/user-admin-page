@@ -103,6 +103,7 @@
 
 .keyboard_icon{
     color:black;
+    cursor: pointer;
 }
 
 .keyboard{

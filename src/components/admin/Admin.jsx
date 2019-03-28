@@ -1,8 +1,10 @@
 import React from 'react';
 import Dialog from '@material-ui/core/Dialog';
 import TextField from '@material-ui/core/TextField';
-import Keyboard from 'react-virtual-keyboard';
+//import Keyboard from 'react-virtual-keyboard';
 import ClickAwayListener from '@material-ui/core/ClickAwayListener';
+import Keyboard from 'react-simple-keyboard';
+import 'react-simple-keyboard/build/css/index.css';
 import './Admin.css';
 
 export default class Admin extends React.Component{
@@ -152,14 +154,22 @@ class Add extends React.Component {
 		});
 	}
 
+	onChange = (input) => {
+		this.setState({
+			username: input,
+		})
+	}
+
+	onKeyPress = (button) => {
+		console.log("Button pressed", button);
+	}
+
 	render(){
 		return(
-			<div className="add_dialoge">
-				<ClickAwayListener onClickAway={this.hideKeyboard}>
-					<div className="keyboard_icon" onClick={this.showKeyboard}>
-						<i class="far fa-keyboard"></i>
-					</div>	
-				</ClickAwayListener>								
+			<div className="add_dialoge">				
+				<div className="keyboard_icon" onClick={this.showKeyboard}>
+					<i class="far fa-keyboard"></i>
+				</div>									
 				<TextField
 					outline
 					margin="normal"
@@ -170,43 +180,70 @@ class Add extends React.Component {
 					onChange={this.handleChange}
 					value={this.state.username}
 					fullWidth
-         />
+        		 />
 				 <TextField
-          id="outlined-multiline-static"
-          label="Description"
-          multiline
-					rows="4"
-					name="description"
-          margin="normal"
-					variant="outlined"
-					onChange={this.handleChange}
-					value={this.state.description}
-					fullWidth
-        />
-				<div className = "keyboard" style={{display:this.state.show_keyboard}}>
-					<Keyboard 
-						value={this.state.username}
-						name='keyboard'
-						options={{
-							layout: "qwerty",
-							alwaysOpen: true,
-							usePreview: false,
-							useWheel: false,
-							stickyShift: false,
-							appendLocally: true,
-							color: "light",
-							updateOnChange: true,
-							initialFocus: true,
-							display: {
-								"accept" : "Submit"
-							}
-						}}
-						onChange={this.onInputChanged}
-						onAccepted={this.onInputSubmitted}
-						onCancel={this.hideKeyboard}
-						ref={k => this.keyboard = k}
-					/>
-				</div>
+					id="outlined-multiline-static"
+					label="Description"
+					multiline
+								rows="4"
+								name="description"
+					margin="normal"
+								variant="outlined"
+								onChange={this.handleChange}
+								value={this.state.description}
+								fullWidth
+				/>
+
+				<ClickAwayListener onClickAway={this.hideKeyboard}>
+					<div className = "keyboard" style={{display:this.state.show_keyboard}}>
+						<Keyboard
+							onChange={input =>
+							this.onChange(input)}
+							onKeyPress={button =>
+							this.onKeyPress(button)}
+							layout={{
+								'default': [
+								  '` 1 2 3 4 5 6 7 8 9 0 - = {bksp}',
+								  '{tab} b न े ी प ा ल u i o p [ ] \\',
+								  '{lock} a s d f g h j k l ; \' {enter}',
+								  '{shift} z x c v b n m , . / {shift}',
+								  '.com @ {space}'
+								],
+								'shift': [
+								  '~ ! @ # $ % ^ & * ( ) _ + {bksp}',
+								  '{tab} Q W E R T Y U I O P { } |',
+								  '{lock} A S D F G H J K L : " {enter}',
+								  '{shift} Z X C V B N M < > ? {shift}',
+								  '.com @ {space}'
+								]
+							  }}
+							  layoutName={"default"}
+						/>
+						{/* <Keyboard 
+							value={this.state.username}
+							name='keyboard'
+							options={{
+								layout: "qwerty",
+								alwaysOpen: true,
+								usePreview: false,
+								useWheel: false,
+								stickyShift: false,
+								appendLocally: true,
+								color: "light",
+								updateOnChange: true,
+								initialFocus: true,
+								display: {
+									"accept" : "Submit"
+								}
+							}}
+							onChange={this.onInputChanged}
+							onAccepted={this.onInputSubmitted}
+							onCancel={this.hideKeyboard}
+							ref={k => this.keyboard = k}
+						/> */}
+					</div>				
+				</ClickAwayListener>
+				
 				<div className="save_cancel">
 					<div className="save">Save</div>
 					<div className="cancel" onClick={this.props.hideModal}>Cancel</div>
