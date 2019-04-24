@@ -99,6 +99,13 @@
 
 .add_dialoge{
     padding:100px 50px;
+    background-color:white;
+    position: absolute;
+    top:-25px;
+    left: -100px;
+    transition: 1s;
+    width:500px;
+
 }
 
 .keyboard_icon{
@@ -109,10 +116,9 @@
 .keyboard{
     background-color:#ff00001a;
     width:590px;
-    position:absolute;
-    bottom:0;
-    z-index:999;
-    margin-left:-50px;
+    position: absolute;
+    left:0px;
+    z-index: 9999999;
     justify-content: center;
     align-items: center;
     text-align: center;

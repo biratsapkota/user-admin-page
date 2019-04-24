@@ -2,6 +2,7 @@ import React from 'react';
 import Dialog from '@material-ui/core/Dialog';
 import TextField from '@material-ui/core/TextField';
 //import Keyboard from 'react-virtual-keyboard';
+import InputAdornment from '@material-ui/core/InputAdornment';
 import ClickAwayListener from '@material-ui/core/ClickAwayListener';
 import Keyboard from 'react-simple-keyboard';
 import 'react-simple-keyboard/build/css/index.css';
@@ -96,16 +97,7 @@ class UserInfo extends React.Component{
 					<div className="save">Save</div>
 					<div className="cancel" onClick={this.props.handleCancel}>Cancel</div>
 				</div>
-				<Dialog
-          open={this.state.open_dialoge}
-          onClose={this.hideModal}
-					aria-labelledby="form-dialog-title"
-					fullWidth
-					maxWidth='sm'
-        >
-					<Add hideModal={this.hideModal}/>
-				</Dialog>
-				
+					{ this.state.open_dialoge ? <Add hideModal={this.hideModal}/> : '' }
 			</React.Fragment>
 		)
 	}
@@ -117,8 +109,7 @@ class Add extends React.Component {
 		this.state = {
 			username:'',
 			description:'',
-			input:'',
-			show_keyboard:'none',
+			show_keyboard:false,
 		}
 	}
 
@@ -133,43 +124,31 @@ class Add extends React.Component {
 
 	showKeyboard = () =>{
 		this.setState({
-			show_keyboard:'block',
+			show_keyboard:!this.state.show_keyboard,
 		})
 	}
 
 	hideKeyboard = () =>{
 		this.setState({
-			show_keyboard:'none',
+			show_keyboard:false,
 		})
-	}
-
-	onInputChanged = (data) => {
-		this.setState({ input: data });
-	}
-	 
-	onInputSubmitted = (data) => {
-		this.setState({ 
-			input:"",
-			username: data, 
-		});
 	}
 
 	onChange = (input) => {
 		this.setState({
-			username: input,
+			description: input,
 		})
 	}
 
 	onKeyPress = (button) => {
-		console.log("Button pressed", button);
+		this.setState({
+			description: button,
+		})
 	}
 
 	render(){
 		return(
-			<div className="add_dialoge">				
-				<div className="keyboard_icon" onClick={this.showKeyboard}>
-					<i class="far fa-keyboard"></i>
-				</div>									
+			<div className="add_dialoge">								
 				<TextField
 					outline
 					margin="normal"
@@ -179,23 +158,31 @@ class Add extends React.Component {
 					variant="outlined"
 					onChange={this.handleChange}
 					value={this.state.username}
+					onClick={this.hideKeyboard}
 					fullWidth
         		 />
 				 <TextField
 					id="outlined-multiline-static"
 					label="Description"
 					multiline
-								rows="4"
-								name="description"
+					rows="4"
+					name="description"
 					margin="normal"
-								variant="outlined"
-								onChange={this.handleChange}
-								value={this.state.description}
-								fullWidth
+					variant="outlined"
+					onChange={this.handleChange}
+					value={this.state.description}
+					fullWidth
+					InputProps={{
+						endAdornment: <InputAdornment position="end">				
+							<div className="keyboard_icon" onClick={this.showKeyboard}>
+								<i class="far fa-keyboard"></i>
+							</div>
+						</InputAdornment>,
+					}}
 				/>
 
-				<ClickAwayListener onClickAway={this.hideKeyboard}>
-					<div className = "keyboard" style={{display:this.state.show_keyboard}}>
+				{this.state.show_keyboard ? 
+				<div className = "keyboard" style={{display:this.state.show_keyboard}}>
 						<Keyboard
 							onChange={input =>
 							this.onChange(input)}
@@ -204,7 +191,7 @@ class Add extends React.Component {
 							layout={{
 								'default': [
 								  '` 1 2 3 4 5 6 7 8 9 0 - = {bksp}',
-								  '{tab} b न े ी प ा ल u i o p [ ] \\',
+								  '{tab} b ने ी प ा ल u i o p [ ] \\',
 								  '{lock} a s d f g h j k l ; \' {enter}',
 								  '{shift} z x c v b n m , . / {shift}',
 								  '.com @ {space}'
@@ -218,31 +205,9 @@ class Add extends React.Component {
 								]
 							  }}
 							  layoutName={"default"}
+							  physicalKeyboardHighlight={true}
 						/>
-						{/* <Keyboard 
-							value={this.state.username}
-							name='keyboard'
-							options={{
-								layout: "qwerty",
-								alwaysOpen: true,
-								usePreview: false,
-								useWheel: false,
-								stickyShift: false,
-								appendLocally: true,
-								color: "light",
-								updateOnChange: true,
-								initialFocus: true,
-								display: {
-									"accept" : "Submit"
-								}
-							}}
-							onChange={this.onInputChanged}
-							onAccepted={this.onInputSubmitted}
-							onCancel={this.hideKeyboard}
-							ref={k => this.keyboard = k}
-						/> */}
-					</div>				
-				</ClickAwayListener>
+					</div>	: '' }
 				
 				<div className="save_cancel">
 					<div className="save">Save</div>

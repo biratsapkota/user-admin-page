@@ -9,13 +9,13 @@ export default class Home extends React.Component {
 			<div>
 				<Header />
 				<div className="container">
-				<Switch>
-					<Redirect exact from="/user/home" to="/user/home/math" />
-					<Route path="/user/home/math/" component={Math} />
-					<Route path="/user/home/physics/" component={Physics} />
-					<Route path="/user/home/chemistry/" component={Chemistry} />
-					<Route path="/user/home/aboutus/" component={Aboutus} />          
-				</Switch>      
+					<Switch>
+						<Redirect exact from="/user/home" to="/user/home/math" />
+						<Route path="/user/home/math/" component={Math} />
+						<Route path="/user/home/physics/" component={Physics} />
+						<Route path="/user/home/chemistry/" component={Chemistry} />
+						<Route path="/user/home/aboutus/" component={Aboutus} />          
+					</Switch>      
 				</div>
 			</div>
 		)
